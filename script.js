@@ -6,15 +6,9 @@ console.log("Hello, world!")
 // https://api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}
 // icon url: http://openweathermap.org/img/wn/10d@2x.png
 
-// ## Data to get:
 
-// 1. City Name: `name`
-// 2. Weather description: `weather[0].description`
-// 3. Weather icon: `weather[0].icon`
-// 4. temperature: `main.temp`
-// 5. feels like: `main.feels_like`
-// 6. humidity: `main.humidity`
-
+const input = document.querySelector("input");
+const btn = document.querySelector("button");
 const img = document.querySelector("img");
 const nameElem = document.querySelector(".name");
 const weatherElem = document.querySelector(".weather");
@@ -39,18 +33,18 @@ const getCurrentWeather = async (city) => {
         const data = await response.json();
 
         const weatherObj = Weather(data);
-        console.log(weatherObj);
 
         img.src = `http://openweathermap.org/img/wn/${weatherObj.weatherIcon}@2x.png`;
-        nameElem.textContent += weatherObj.name;
-        weatherElem.textContent += weatherObj.weather;
-        tempElem.textContent += Math.round(weatherObj.temp - 273) + ' °C';
-        feelsElem.textContent += Math.round(weatherObj.feelsLike -273) + ' °C';
-        humidityElem.textContent += Math.round(weatherObj.humidity) + '%';
+        nameElem.textContent = `City: ${weatherObj.name}`;
+        weatherElem.textContent = `Weather: ${weatherObj.weather}`;
+        tempElem.textContent = `Temperature: ${Math.round(weatherObj.temp - 273)} °C`;
+        feelsElem.textContent = `Feels Like: ${Math.round(weatherObj.feelsLike -273)} °C`;
+        humidityElem.textContent = `Humidity: ${Math.round(weatherObj.humidity)}%`;
     } catch (error) {
-        console.log(error);        
+        console(error);
     }
 }
 
-
-getCurrentWeather("Dieng");
+btn.addEventListener("click", () => {
+    getCurrentWeather(input.value);
+})
