@@ -39,10 +39,15 @@ const getCurrentWeather = async (city) => {
   try {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0eb089dd7b64c6aad23737c804ed8201`)
     const data = await response.json()
-    const weatherObj = Weather(data)
-    updateDOM(weatherObj)
+
+    if (data.cod === 200) {
+      const weatherObj = Weather(data);
+      updateDOM(weatherObj);
+    } else {
+      alert(`Error ${data.cod}: ${data.message}`);
+    }
   } catch (error) {
-    // console.log(error)
+    console.log(error)
   }
 }
 
