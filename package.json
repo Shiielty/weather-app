@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Shiielty/weather-app#readme",
   "devDependencies": {
     "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.30.0",
     "eslint-config-prettier": "^8.5.0"
   },
   "config": {
