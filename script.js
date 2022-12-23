@@ -15,6 +15,22 @@ const tempElem = document.querySelector('.temp')
 const feelsElem = document.querySelector('.feels')
 const humidityElem = document.querySelector('.humidity')
 
+
+const getCurrentWeather = async (city) => {
+  try {
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0eb089dd7b64c6aad23737c804ed8201`)
+    const data = await response.json()
+
+    if (data.cod === 200) {
+      return data
+    } else {
+      throw data.message
+    }
+  } catch (error) {
+    alert(error)
+  }
+}
+
 const Weather = (promiseData) => {
   const city = promiseData.name
   const weather = promiseData.weather[0].description
@@ -35,28 +51,19 @@ const updateDOM = (obj) => {
   humidityElem.textContent = `Humidity: ${Math.round(obj.humidity)}%`
 }
 
-const getCurrentWeather = async (city) => {
+const newWeather = async() => {
   try {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0eb089dd7b64c6aad23737c804ed8201`)
-    const data = await response.json()
-
-    if (data.cod === 200) {
-      const weatherObj = Weather(data);
-      updateDOM(weatherObj);
-    } else {
-      alert(`Error ${data.cod}: ${data.message}`);
-    }
-  } catch (error) {
-    console.log(error)
+    const currentWeather = await getCurrentWeather(input.value);
+    const obj = Weather(currentWeather);
+    updateDOM(obj);
+  } catch (err) {
+    // ignore
   }
 }
 
-btn.addEventListener('click', () => {
-  getCurrentWeather(input.value)
-})
+
+btn.addEventListener('click', newWeather)
 
 input.addEventListener('keydown', (e) => {
-  if (e.key === "Enter") {
-    getCurrentWeather(input.value);
-  }
+  if (e.key === "Enter") newWeather();
 })
