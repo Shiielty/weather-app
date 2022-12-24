@@ -61,9 +61,10 @@ const updateDOM = (obj) => {
   maxTempElem.textContent = `${Math.round(obj.maxTemp - 273)} °C`
 }
 
-const newWeather = async() => {
+
+const newWeather = async(city) => {
   try {
-    const currentWeather = await getCurrentWeather(input.value);
+    const currentWeather = await getCurrentWeather(city);
     const obj = Weather(currentWeather);
     updateDOM(obj);
   } catch (err) {
@@ -71,9 +72,12 @@ const newWeather = async() => {
   }
 }
 
+newWeather("Tokyo");
 
-btn.addEventListener('click', newWeather)
+btn.addEventListener('click', () => {
+  newWeather(input.value)
+})
 
 input.addEventListener('keydown', (e) => {
-  if (e.key === "Enter") newWeather();
+  if (e.key === "Enter") newWeather(input.value);
 })
