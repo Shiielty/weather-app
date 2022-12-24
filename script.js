@@ -1,11 +1,3 @@
-console.log('Hello, world!')
-
-// my API Keys: 0eb089dd7b64c6aad23737c804ed8201
-
-// https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
-// https://api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}
-// icon url: http://openweathermap.org/img/wn/10d@2x.png
-
 const input = document.querySelector('input')
 const btn = document.querySelector('button')
 const img = document.querySelector('img')
@@ -23,7 +15,6 @@ const getCurrentWeather = async (city) => {
   try {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0eb089dd7b64c6aad23737c804ed8201`)
     const data = await response.json()
-    console.log(data);
 
     if (data.cod === 200) {
       return data

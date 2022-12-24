@@ -8,32 +8,38 @@
     <title>Weather App</title>
 </head>
 <body>
-    <h1>天気 | Weather</h1>
     <main>
-        <div class="main-left">
-            <p class="city"></p>
-            <p class="weather"></p>
-            <img src="" alt="">
-            <p class="weather-desc"></p>
-        </div>
-        <div class="main-right">
-            <p class="temp"></p>
-            <div class="more-info">
-                <p class="item item-1"><span>Feels Like</span></p>
-                <p class="feels item item-2"></p>
-                <p class="item item-3"><span>Humidity</span></p>
-                <p class="humidity item item-4"></p>
-                <p class="item item-5"><span>Min temp</span></p>
-                <p class="min-temp item item-6"></p>
-                <p class="item item-7"><span>Max temp</span></p>
-                <p class="max-temp item item-8"></p>
+        <h1>天気 | Weather</h1>
+        <div class="main-content">
+            <div class="main-left">
+                <p class="city"></p>
+                <p class="weather"></p>
+                <img src="" alt="">
+                <p class="weather-desc"></p>
+            </div>
+            <div class="main-right">
+                <p class="temp"></p>
+                <div class="more-info">
+                    <p class="item item-1"><span>Feels Like</span></p>
+                    <p class="feels item item-2"></p>
+                    <p class="item item-3"><span>Humidity</span></p>
+                    <p class="humidity item item-4"></p>
+                    <p class="item item-5"><span>Min temp</span></p>
+                    <p class="min-temp item item-6"></p>
+                    <p class="item item-7"><span>Max temp</span></p>
+                    <p class="max-temp item item-8"></p>
+                </div>
             </div>
         </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Enter a city...">
+            <button>Search</button>
+        </div>
     </main>
-    <div class="search-bar">
-        <input type="text" placeholder="Enter a city...">
-        <button>Search</button>
-    </div>
+
+    <footer>
+        <p>Created by <a href="https://github.com/Shiielty/">Shiielty</a> with <a href="https://openweathermap.org/">OpenWeatherAPI</a> | <a href="https://github.com/Shiielty/weather-app">Source Code <img src="./img/GitHub-Mark-32px.png" alt="github"></a> </p>
+    </footer>
 
     <script src="./script.js"></script>
 </body>
