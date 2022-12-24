@@ -8,17 +8,33 @@
     <title>Weather App</title>
 </head>
 <body>
-    <h1>Weather App</h1>
+    <h1>天気 | Weather</h1>
+    <main>
+        <div class="main-left">
+            <p class="city">Wonosobo</p>
+            <p class="weather">Cloudy</p>
+            <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="">
+            <p class="weather-desc">A little thunderstorm</p>
+        </div>
+        <div class="main-right">
+            <p class="temp">25°C</p>
+            <div class="more-info">
+                <p class="item item-1"><span>Feels Like</span></p>
+                <p class="feels item item-2">23°C</p>
+                <p class="item item-3"><span>Humidity</span></p>
+                <p class="humidity item item-4">88%</p>
+                <p class="item item-5"><span>Min temp</span></p>
+                <p class="min-temp item item-6">20°C</p>
+                <p class="item item-7"><span>Max temp</span></p>
+                <p class="max-temp item item-8">27°C</p>
+            </div>
+        </div>
+    </main>
     <div class="search-bar">
         <input type="text" placeholder="Enter a city...">
         <button>Search</button>
     </div>
-    <img src="" alt="">
-    <p class="name">Name: </p>
-    <p class="weather">Weather: </p>
-    <p class="temp">Temp: </p>
-    <p class="feels">Feels Like: </p>
-    <p class="humidity">Humidity: </p>
+
     <script src="./script.js"></script>
 </body>
 </html>

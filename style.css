@@ -1,7 +1,159 @@
-body {
-    background: rgb(10, 10, 10);
-    color: rgb(255, 255, 255, 0.8);
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Righteous&display=swap');
+/* font-family: 'Righteous', cursive; 
+    font-family: 'Open Sans', sans-serif;
+*/
 
-    width: 300px;
-    margin: 50px auto;
+body {
+    box-sizing: border-box;
+    background: rgb(180, 180, 255);
+    color: rgb(0, 0, 0, 0.7);
+
+    height: 100vh;
+    text-align: center;
+    margin-top: 20vh;
+
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1,
+.city,
+.temp {
+    font-family: 'Righteous', cursive;
+}
+
+h1 {
+    font-size: 2.5rem;
+    white-space: nowrap;
+}
+
+p {
+    margin: 0;
+}
+
+.search-bar {
+    min-width: fit-content;
+
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+input {
+    flex: 0 0 auto;
+    width: 250px;
+    border: none;
+    border-top-left-radius: 0.5rem ;
+    border-bottom-left-radius: 0.5rem ;
+    padding: 5px 10px;
+    background-color: rgb(255, 255, 255, 0.8);
+    outline: none;
+}
+
+button {
+    padding: 5px 10px;
+    margin: 0;
+    
+    border: none;
+    border-top-right-radius: 0.5rem ;
+    border-bottom-right-radius: 0.5rem ;
+
+    background-color: rgb(100, 100, 255);
+    opacity: 0.8;
+    color: white;
+
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 1;
+}
+
+button:active {
+    font-size: 0.8rem;
+}
+
+main {
+    display: flex;
+    justify-content:space-evenly;
+    gap: 20px;
+    max-width: 400px;
+    min-width: fit-content;
+    padding: 20px 20px;
+
+    margin: 20px auto;
+    border-radius: 0.5rem;
+    
+    background-color: rgb(255, 255, 255, 0.5);
+    text-align: left;
+}
+
+.main-right {
+    padding-left: 30px;
+    border-left: 1px solid black;
+    align-self: center;
+}
+
+.city {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.weather {
+    margin-bottom: -20px;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.weather-desc {
+    margin-top: -30px;
+    text-align: center;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+.temp {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.more-info {
+    display: grid;
+    grid-template-areas:
+        "feels-like humidity"
+        "feels-like-value humidity-value"
+        "max-temp min-temp"
+        "max-temp-value min-temp-value";
+    column-gap: 25px;
+}
+
+.more-info > p {
+    font-size: 0.8rem;
+}
+
+.more-info > p > span {
+    color: rgb(100, 100, 255);
+}
+
+.item {
+    white-space: nowrap;
+}
+
+.item-1 {
+    grid-area: feels-like;
+}
+
+.item-2 {
+    grid-area: feels-like-value;
+    margin-bottom: 15px;
+}
+
+.item-5 {
+    grid-area: max-temp;
+}
+
+.item-6 {
+    grid-area: max-temp-value;
 }
