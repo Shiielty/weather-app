@@ -3,7 +3,13 @@
 In this project I make a weather web application using OpenWeather API.  
 This is my first project using API so I'm really exited to build this app!
 
-## OpenWeather API
+![weather-app-screenshot](/img/Weather-app-screenshot.png)
+
+Live demo [here](https://shiielty.github.io/weather-app)
+
+---
+
+## [OpenWeather API](https://openweathermap.org/)
 
 **Current Weather**
 
@@ -21,12 +27,3 @@ API Call
 ```
 api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}
 ```
-
-## Data to get:
-
-1. City Name: `name`
-2. Weather description: `weather[0].description`
-3. Weather icon: `weather[0].icon`
-4. temperature: `main.temp`
-5. feels like: `main.feels_like`
-6. humidity: `main.humidity`
