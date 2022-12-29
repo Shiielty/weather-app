@@ -7,7 +7,7 @@ This is my first project using API so I'm really exited to build this app!
 
 Live demo [here](https://shiielty.github.io/weather-app)
 
----
+<!-- ---
 
 ## [OpenWeather API](https://openweathermap.org/)
 
@@ -26,4 +26,4 @@ https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 API Call
 ```
 api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}
-```
+``` -->
