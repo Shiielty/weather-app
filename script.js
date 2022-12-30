@@ -9,7 +9,7 @@ const feelsElem = document.querySelector('.feels')
 const humidityElem = document.querySelector('.humidity')
 const minTempElem = document.querySelector(".min-temp")
 const maxTempElem = document.querySelector(".max-temp")
-
+let unit = "celcius"; // default is celcius
 
 const getCurrentWeather = async (city) => {
   try {
@@ -40,30 +40,61 @@ const Weather = (promiseData) => {
   return { city, weather, weatherIcon, weatherDesc, temp, feelsLike, humidity, minTemp, maxTemp }
 }
 
-const updateDOM = (obj) => {
+const kelvinToCelcius = (temperature) => Math.round(temperature - 273.15);
+const kelvinToFahrenheit = (temperature) => Math.round((temperature - 273.15) * (9/5) + 32);
+const celciusToFahrenheit = (temperature) => Math.round((temperature * 9/5) + 32);
+const fahrenheitToCelcius = (temperature) => Math.round((temperature - 32) * (5/9));
+
+const updateDOM = (obj, unit) => {
   img.src = `http://openweathermap.org/img/wn/${obj.weatherIcon}@2x.png`
   cityElem.textContent = obj.city
   weatherElem.textContent = obj.weather
   weatherDescElem.textContent = obj.weatherDesc
-  tempElem.textContent = `${Math.round(obj.temp - 273)} °C`
-  feelsElem.textContent = `${Math.round(obj.feelsLike - 273)} °C`
   humidityElem.textContent = `${obj.humidity}%`
-  minTempElem.textContent = `${Math.round(obj.minTemp - 273)} °C`
-  maxTempElem.textContent = `${Math.round(obj.maxTemp - 273)} °C`
-}
 
+  if (unit === "celcius") {
+    tempElem.textContent = `${kelvinToCelcius(obj.temp)} °C`
+    feelsElem.textContent = `${kelvinToCelcius(obj.feelsLike)} °C`
+    minTempElem.textContent = `${kelvinToCelcius(obj.minTemp)} °C`
+    maxTempElem.textContent = `${kelvinToCelcius(obj.maxTemp)} °C`
+  } else if (unit === "fahrenheit") {
+    tempElem.textContent = `${kelvinToFahrenheit(obj.temp)} °F`
+    feelsElem.textContent = `${kelvinToFahrenheit(obj.feelsLike)} °F`
+    minTempElem.textContent = `${kelvinToFahrenheit(obj.minTemp)} °F`
+    maxTempElem.textContent = `${kelvinToFahrenheit(obj.maxTemp)} °F`
+  }
+}
 
 const newWeather = async(city) => {
   try {
     const currentWeather = await getCurrentWeather(city);
     const obj = Weather(currentWeather);
-    updateDOM(obj);
+    updateDOM(obj, unit);
   } catch (err) {
     // ignore
   }
 }
 
-newWeather("Tokyo");
+const toggleUnit = () => {
+  const temp = parseInt(tempElem.textContent);
+  const feelsLike = parseInt(feelsElem.textContent);
+  const minTemp = parseInt(minTempElem.textContent);
+  const maxTemp = parseInt(maxTempElem.textContent);
+  
+  if (unit === "celcius") {
+    tempElem.textContent = `${celciusToFahrenheit(temp)} °F`
+    feelsElem.textContent = `${celciusToFahrenheit(feelsLike)} °F`
+    minTempElem.textContent = `${celciusToFahrenheit(minTemp)} °F`
+    maxTempElem.textContent = `${celciusToFahrenheit(maxTemp)} °F`
+  } else {
+    tempElem.textContent = `${fahrenheitToCelcius(temp)} °C`
+    feelsElem.textContent = `${fahrenheitToCelcius(feelsLike)} °C`
+    minTempElem.textContent = `${fahrenheitToCelcius(minTemp)} °C`
+    maxTempElem.textContent = `${fahrenheitToCelcius(maxTemp)} °C`
+  }
+
+  unit === "celcius" ? unit = "fahrenheit" : unit = "celcius";
+}
 
 btn.addEventListener('click', () => {
   newWeather(input.value)
@@ -72,3 +103,5 @@ btn.addEventListener('click', () => {
 input.addEventListener('keydown', (e) => {
   if (e.key === "Enter") newWeather(input.value);
 })
+
+newWeather("Tokyo");
