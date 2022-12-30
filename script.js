@@ -1,5 +1,5 @@
 const input = document.querySelector('input')
-const btn = document.querySelector('button')
+const btn = document.querySelector('.search-btn')
 const img = document.querySelector('img')
 const cityElem = document.querySelector('.city')
 const weatherElem = document.querySelector('.weather')
@@ -9,6 +9,7 @@ const feelsElem = document.querySelector('.feels')
 const humidityElem = document.querySelector('.humidity')
 const minTempElem = document.querySelector(".min-temp")
 const maxTempElem = document.querySelector(".max-temp")
+const toggleBtn = document.querySelector(".toggle-btn")
 let unit = "celcius"; // default is celcius
 
 const getCurrentWeather = async (city) => {
@@ -86,15 +87,21 @@ const toggleUnit = () => {
     feelsElem.textContent = `${celciusToFahrenheit(feelsLike)} °F`
     minTempElem.textContent = `${celciusToFahrenheit(minTemp)} °F`
     maxTempElem.textContent = `${celciusToFahrenheit(maxTemp)} °F`
+    toggleBtn.textContent = "°C";
   } else {
     tempElem.textContent = `${fahrenheitToCelcius(temp)} °C`
     feelsElem.textContent = `${fahrenheitToCelcius(feelsLike)} °C`
     minTempElem.textContent = `${fahrenheitToCelcius(minTemp)} °C`
     maxTempElem.textContent = `${fahrenheitToCelcius(maxTemp)} °C`
+    toggleBtn.textContent = "°F";
   }
 
   unit === "celcius" ? unit = "fahrenheit" : unit = "celcius";
 }
+
+toggleBtn.addEventListener('click', () => {
+  toggleUnit();
+})
 
 btn.addEventListener('click', () => {
   newWeather(input.value)

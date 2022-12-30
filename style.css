@@ -98,6 +98,7 @@ button:active {
     padding-left: 30px;
     border-left: 1px solid black;
     align-self: center;
+    position: relative;
 }
 
 .city {
@@ -163,6 +164,19 @@ img {
 
 .item-6 {
     grid-area: max-temp-value;
+}
+
+.toggle-btn {
+    position: absolute;
+    top: 15px;
+    right: -20px;
+    border-radius: 0.5rem;
+    opacity: 0.6;
+    background-color: rgb(0, 0, 0, 0.9);
+}
+
+.toggle-btn:hover {
+    background-color: rgb(100, 100, 255);
 }
 
 footer {
